@@ -1,0 +1,133 @@
+GET http://localhost:8000/produk
+
+###
+GET http://localhost:8000/produk/1
+
+###
+POST http://localhost:8000/produk
+Content-Type: application/json
+
+{
+    "name":"mobil",
+    "quantity":10
+}
+
+###
+PUT http://localhost:8000/produk/2
+Content-Type: application/json
+
+{
+    "name":"mobil",
+    "quantity":25
+}
+
+### 
+DELETE  http://localhost:8000/produk/4
+
+###
+GET http://localhost:8000/komponen
+
+###
+GET http://localhost:8000/komponen/1
+
+###
+POST http://localhost:8000/komponen
+Content-Type: application/json
+
+{
+    "name":"body becak",
+    "description":"hanya bisa digunakan di becak"
+}
+
+###
+PUT http://localhost:8000/komponen/1
+Content-Type: application/json
+
+{
+    "name":"ban mobil",
+    "description":"hanya bisa digunakan di mobil"
+}
+
+### 
+DELETE  http://localhost:8000/komponen/4
+
+###
+GET http://localhost:8000/pemasok
+
+###
+GET http://localhost:8000/pemasok/3
+
+###
+POST http://localhost:8000/pemasok
+Content-Type: application/json
+
+{
+    "name":"wahyu",
+    "addres":"kalimantan"
+}
+
+###
+PUT http://localhost:8000/pemasok/1
+Content-Type: application/json
+
+{
+    "name":"sabrina",
+    "addres":"bandung"
+}
+
+### 
+DELETE  http://localhost:8000/pemasok/4
+
+###
+GET http://localhost:8000/produk_komponen
+
+###
+GET http://localhost:8000/produk_komponen/3
+
+###
+POST http://localhost:8000/produk_komponen
+Content-Type: application/json
+
+{
+    "id_produk":3,
+    "id_komponen":3
+}
+
+###
+PUT http://localhost:8000/produk_komponen/1
+Content-Type: application/json
+
+{
+    "id_produk":3,
+    "id_komponen":1
+}
+
+### 
+DELETE  http://localhost:8000/produk_komponen/4
+
+###
+GET http://localhost:8000/komponen_pemasok
+
+###
+GET http://localhost:8000/komponen_pemasok/3
+
+###
+POST http://localhost:8000/komponen_pemasok
+Content-Type: application/json
+
+{
+    "id_komponen":2,
+    "id_pemasok":3
+}
+
+###
+PUT http://localhost:8000/komponen_pemasok/1
+Content-Type: application/json
+
+{
+    "id_komponen":1,
+    "id_pemasok":3
+}
+
+### 
+DELETE  http://localhost:8000/komponen_pemasok/4
