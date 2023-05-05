@@ -1,0 +1,822 @@
+openapi: 3.0.0
+info:
+  title: Gudang
+  description: |-
+    Aplikasi sederhana untuk mengontrol data barang
+  contact:
+    email: fitrah0212@gmail.com
+  version: 1.0.0
+servers:
+  - url: http://localhost:7000
+    description: Test local computer
+  - url: https://test.youtube-like.com
+    description: Staging
+  - url: https://youtube-like.com
+    description: Production
+tags:
+  - name: produk
+    description: Endpoint produk
+  - name: komponen
+    description: Endpoint komponen
+  - name: pemasok
+    description: Endpoint pemasok
+paths:
+  /produk:
+    get:
+      tags:
+        - produk
+      summary: Melihat data produk
+      description: Melihat data produk (desc)
+      operationId: post_produk
+      responses:
+        "201":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: motor
+                        quantity:
+                          type: integer
+                          example: 25
+    post:
+      tags:
+        - produk
+      summary: Mendapatkan token
+      description: Mendapatkan token (desc)
+      operationId: post-login-user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: motor
+                quantity:
+                  type: integer
+                  example: 25
+      responses:
+        "201":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: motor
+                        quantity:
+                          type: integer
+                          example: 25
+        "401":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: email or password is invalid!
+                  data: 
+                    type: object
+  /produk/{id}:
+    put:
+      tags:
+        - produk
+      summary: Update channel data
+      description: Update channel data (desc)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: id of channel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: mobil
+                quantity:
+                  type: integer
+                  example: 13
+      responses:
+        "200":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: motor
+                        quantity:
+                          type: integer
+                          example: 25
+    get:
+      tags:
+        - produk
+      summary: Update channel data
+      description: Update channel data (desc)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: id of channel
+      responses:
+        "200":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: motor
+                        quantity:
+                          type: integer
+                          example: 25
+    delete:
+      tags:
+        - produk
+      summary: Update channel data
+      description: Update channel data (desc)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: id of channel
+      responses:
+        "200":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: object
+  /produk/connect:
+    post:
+      tags:
+        - produk
+      summary: Mendapatkan token
+      description: Mendapatkan token (desc)
+      operationId: post-connect-komponen
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_produk:
+                  type: integer
+                  example: 3
+                id_komponen:
+                  type: integer
+                  example: 2
+      responses:
+        "201":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        id_produk:
+                          type: integer
+                          example: 3
+                        id_komponen:
+                          type: integer
+                          example: 2
+        "401":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: id_komponen and id_produk must be a valid id!
+                  data: 
+                    type: object
+        "400":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: already connected!
+                  data: 
+                    type: object
+  
+  /komponen:
+    get:
+      tags:
+        - komponen
+      summary: Melihat data produk
+      description: Melihat data produk (desc)
+      operationId: post_produk
+      responses:
+        "201":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: motor
+                        quantity:
+                          type: integer
+                          example: 25
+    post:
+      tags:
+        - komponen
+      summary: Mendapatkan token
+      description: Mendapatkan token (desc)
+      operationId: post-login-user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: motor
+                quantity:
+                  type: integer
+                  example: 25
+      responses:
+        "201":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: motor
+                        quantity:
+                          type: integer
+                          example: 25
+        "401":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: email or password is invalid!
+                  data: 
+                    type: object
+  /komponen/{id}:
+    put:
+      tags:
+        - komponen
+      summary: Update channel data
+      description: Update channel data (desc)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: id of channel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: mobil
+                quantity:
+                  type: integer
+                  example: 13
+      responses:
+        "200":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: motor
+                        quantity:
+                          type: integer
+                          example: 25
+    get:
+      tags:
+        - komponen
+      summary: Update channel data
+      description: Update channel data (desc)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: id of channel
+      responses:
+        "200":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: motor
+                        quantity:
+                          type: integer
+                          example: 25
+    delete:
+      tags:
+        - komponen
+      summary: Update channel data
+      description: Update channel data (desc)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: id of channel
+      responses:
+        "200":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: object
+  /pemasok:
+    get:
+      tags:
+        - pemasok
+      summary: Melihat data produk
+      description: Melihat data produk (desc)
+      operationId: post_produk
+      responses:
+        "201":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: motor
+                        quantity:
+                          type: integer
+                          example: 25
+    post:
+      tags:
+        - pemasok
+      summary: Mendapatkan token
+      description: Mendapatkan token (desc)
+      operationId: post-login-user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: motor
+                quantity:
+                  type: integer
+                  example: 25
+      responses:
+        "201":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: motor
+                        quantity:
+                          type: integer
+                          example: 25
+        "401":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: email or password is invalid!
+                  data: 
+                    type: object
+  /pemasok/{id}:
+    put:
+      tags:
+        - pemasok
+      summary: Update channel data
+      description: Update channel data (desc)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: id of channel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: mobil
+                quantity:
+                  type: integer
+                  example: 13
+      responses:
+        "200":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: motor
+                        quantity:
+                          type: integer
+                          example: 25
+    get:
+      tags:
+        - pemasok
+      summary: Update channel data
+      description: Update channel data (desc)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: id of channel
+      responses:
+        "200":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: motor
+                        quantity:
+                          type: integer
+                          example: 25
+    delete:
+      tags:
+        - pemasok
+      summary: Update channel data
+      description: Update channel data (desc)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: id of channel
+      responses:
+        "200":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: object
+  /pemasok/connect:
+    post:
+      tags:
+        - pemasok
+      summary: Mendapatkan token
+      description: Mendapatkan token (desc)
+      operationId: post-connect-pemasok
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_produk:
+                  type: integer
+                  example: 3
+                id_komponen:
+                  type: integer
+                  example: 2
+      responses:
+        "201":
+          description: Success Register
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                    example: success
+                  data: 
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        id_produk:
+                          type: integer
+                          example: 3
+                        id_komponen:
+                          type: integer
+                          example: 2
+        "401":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: id_komponen and id_produk must be a valid id!
+                  data: 
+                    type: object
+        "400":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: already connected!
+                  data: 
+                    type: object
+  

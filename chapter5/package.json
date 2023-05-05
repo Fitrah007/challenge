@@ -1,7 +1,6 @@
 {
   "name": "chapter4",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js"
@@ -18,5 +17,6 @@
     "pg": "^8.10.0",
     "sequelize": "^6.31.0",
     "yaml": "^2.2.2"
-  }
+  },
+  "description": ""
 }
