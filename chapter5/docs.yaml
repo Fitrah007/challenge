@@ -112,7 +112,22 @@ paths:
                     example: false
                   message:
                     type: string
-                    example: email or password is invalid!
+                    example: name and quantity is required!
+                  data: 
+                    type: object
+        "404":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: produk is already exist!
                   data: 
                     type: object
   /produk/{id}:
@@ -168,6 +183,21 @@ paths:
                         quantity:
                           type: integer
                           example: 25
+        "401":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: can't find produk with id ${id}!
+                  data: 
+                    type: object
     get:
       tags:
         - produk
@@ -208,6 +238,21 @@ paths:
                         quantity:
                           type: integer
                           example: 25
+        "404":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: can't find produk with id ${id}!
+                  data: 
+                    type: object
     delete:
       tags:
         - produk
@@ -234,6 +279,21 @@ paths:
                   message:
                     type: string
                     example: success
+                  data: 
+                    type: object
+        "404":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: can't find produk with id ${id}!
                   data: 
                     type: object
   /produk/connect:
@@ -319,7 +379,7 @@ paths:
         - komponen
       summary: Melihat data produk
       description: Melihat data produk (desc)
-      operationId: post_produk
+      operationId: get-komponen
       responses:
         "201":
           description: Success
@@ -343,16 +403,16 @@ paths:
                           example: 1
                         name:
                           type: string
-                          example: motor
-                        quantity:
-                          type: integer
-                          example: 25
+                          example: ban motor
+                        description:
+                          type: string
+                          example: bisa digunakan untuk motor dan becak
     post:
       tags:
         - komponen
       summary: Mendapatkan token
       description: Mendapatkan token (desc)
-      operationId: post-login-user
+      operationId: post-komponen
       requestBody:
         content:
           application/json:
@@ -361,10 +421,10 @@ paths:
               properties:
                 name:
                   type: string
-                  example: motor
-                quantity:
-                  type: integer
-                  example: 25
+                  example: ban motor
+                description:
+                  type: string
+                  example: bisa digunakan untuk motor dan becak
       responses:
         "201":
           description: Success Register
@@ -388,25 +448,10 @@ paths:
                           example: 1
                         name:
                           type: string
-                          example: motor
-                        quantity:
-                          type: integer
-                          example: 25
-        "401":
-          description: Error from user
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: email or password is invalid!
-                  data: 
-                    type: object
+                          example: ban motor
+                        description:
+                          type: string
+                          example: bisa digunakan untuk motor dan becak
   /komponen/{id}:
     put:
       tags:
@@ -429,12 +474,12 @@ paths:
               properties:
                 name:
                   type: string
-                  example: mobil
-                quantity:
-                  type: integer
-                  example: 13
+                  example: ban mobil
+                description:
+                  type: string
+                  example: hanya bisa digunakan untuk mobil
       responses:
-        "200":
+        "201":
           description: Success Register
           content:
             application/json:
@@ -456,10 +501,25 @@ paths:
                           example: 1
                         name:
                           type: string
-                          example: motor
-                        quantity:
-                          type: integer
-                          example: 25
+                          example: ban mobil
+                        description:
+                          type: string
+                          example: hanya bisa digunakan untuk mobil
+        "404":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: can't find komponen with id ${id_komponen}!
+                  data: 
+                    type: object
     get:
       tags:
         - komponen
@@ -496,10 +556,25 @@ paths:
                           example: 1
                         name:
                           type: string
-                          example: motor
-                        quantity:
-                          type: integer
-                          example: 25
+                          example: ban motor
+                        description:
+                          type: string
+                          example: bisa digunakan untuk motor dan becak
+        "404":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: can't find komponen with id ${id_komponen}!
+                  data: 
+                    type: object
     delete:
       tags:
         - komponen
@@ -528,13 +603,28 @@ paths:
                     example: success
                   data: 
                     type: object
+        "404":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: can't find komponen with id ${id_komponen}!
+                  data: 
+                    type: object
   /pemasok:
     get:
       tags:
         - pemasok
       summary: Melihat data produk
       description: Melihat data produk (desc)
-      operationId: post_produk
+      operationId: get-pemasok
       responses:
         "201":
           description: Success
@@ -567,7 +657,7 @@ paths:
         - pemasok
       summary: Mendapatkan token
       description: Mendapatkan token (desc)
-      operationId: post-login-user
+      operationId: post-pemasok
       requestBody:
         content:
           application/json:
@@ -576,10 +666,10 @@ paths:
               properties:
                 name:
                   type: string
-                  example: motor
-                quantity:
-                  type: integer
-                  example: 25
+                  example: sabrina
+                addres:
+                  type: string
+                  example: bandung
       responses:
         "201":
           description: Success Register
@@ -603,25 +693,10 @@ paths:
                           example: 1
                         name:
                           type: string
-                          example: motor
-                        quantity:
-                          type: integer
-                          example: 25
-        "401":
-          description: Error from user
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: email or password is invalid!
-                  data: 
-                    type: object
+                          example: sabrina
+                        addres:
+                          type: string
+                          example: bandung
   /pemasok/{id}:
     put:
       tags:
@@ -644,10 +719,10 @@ paths:
               properties:
                 name:
                   type: string
-                  example: mobil
-                quantity:
+                  example: sabrina
+                addres:
                   type: integer
-                  example: 13
+                  example: bandung
       responses:
         "200":
           description: Success Register
@@ -671,10 +746,25 @@ paths:
                           example: 1
                         name:
                           type: string
-                          example: motor
-                        quantity:
-                          type: integer
-                          example: 25
+                          example: sabrina
+                        addres:
+                          type: string
+                          example: bandung
+        "404":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: can't find pemasok with id ${id_pemasok}!
+                  data: 
+                    type: object
     get:
       tags:
         - pemasok
@@ -711,10 +801,25 @@ paths:
                           example: 1
                         name:
                           type: string
-                          example: motor
-                        quantity:
-                          type: integer
-                          example: 25
+                          example: sabrina
+                        addres:
+                          type: string
+                          example: bandung
+        "404":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: can't find pemasok with id ${id_pemasok}!
+                  data: 
+                    type: object
     delete:
       tags:
         - pemasok
@@ -743,6 +848,21 @@ paths:
                     example: success
                   data: 
                     type: object
+        "404":
+          description: Error from user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: can't find pemasok with id ${id_pemasok}!
+                  data: 
+                    type: object
   /pemasok/connect:
     post:
       tags:
@@ -756,7 +876,7 @@ paths:
             schema:
               type: object
               properties:
-                id_produk:
+                id_pemasok:
                   type: integer
                   example: 3
                 id_komponen:
@@ -783,7 +903,7 @@ paths:
                         id:
                           type: integer
                           example: 1
-                        id_produk:
+                        id_emasok:
                           type: integer
                           example: 3
                         id_komponen:
@@ -801,7 +921,7 @@ paths:
                     example: false
                   message:
                     type: string
-                    example: id_komponen and id_produk must be a valid id!
+                    example: id_komponen and id_pemasok must be a valid id!
                   data: 
                     type: object
         "400":

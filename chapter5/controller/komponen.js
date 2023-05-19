@@ -63,7 +63,7 @@ module.exports = {
             if (update[0] == 0){
                 return res.status(404).json({
                     status: false,
-                    message: `can't find channel with id ${id_komponen}`,
+                    message: `can't find komponen with id ${id_komponen}`,
                     data: null
                 })
             }
@@ -85,7 +85,7 @@ module.exports = {
             if(!deleted){
                 return res.status(404).json({
                     status: false,
-                    message:`can't find channel with id ${id_komponen}`
+                    message:`can't find komponen with id ${id_komponen}`
                 })
             }
             
