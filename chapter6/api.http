@@ -1,0 +1,98 @@
+GET http://localhost:7000/produk
+
+###
+GET http://localhost:7000/produk/2
+
+###
+POST http://localhost:7000/produk
+Content-Type: application/json
+
+{
+    "name":"mobil",
+    "quantity":10
+}
+
+###
+PUT http://localhost:7000/produk/2
+Content-Type: application/json
+
+{
+    "name":"mobil",
+    "quantity":25
+}
+
+### 
+DELETE  http://localhost:7000/produk/5
+
+###
+GET http://localhost:7000/komponen
+
+###
+GET http://localhost:7000/komponen/1
+
+###
+POST http://localhost:7000/komponen
+Content-Type: application/json
+
+{
+    "name":"body becak",
+    "description":"hanya bisa digunakan di becak"
+}
+
+###
+PUT http://localhost:7000/komponen/1
+Content-Type: application/json
+
+{
+    "name":"ban mobil",
+    "description":"hanya bisa digunakan di mobil"
+}
+
+### 
+DELETE  http://localhost:7000/komponen/4
+
+###
+GET http://localhost:7000/pemasok
+
+###
+GET http://localhost:7000/pemasok/3
+
+###
+POST http://localhost:7000/pemasok
+Content-Type: application/json
+
+{
+    "name":"wahyu",
+    "addres":"kalimantan"
+}
+
+###
+PUT http://localhost:7000/pemasok/1
+Content-Type: application/json
+
+{
+    "name":"sabrina",
+    "addres":"bandung"
+}
+
+### 
+DELETE  http://localhost:7000/pemasok/4
+
+###
+POST http://localhost:7000/pemasok/connect
+Content-Type: application/json
+
+{
+    "id_komponen":2,
+    "id_pemasok":3
+}
+
+
+###
+POST http://localhost:7000/produk/connect
+Content-Type: application/json
+
+{
+    "id_produk":3,
+    "id_komponen":2
+}
