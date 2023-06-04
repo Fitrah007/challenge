@@ -1,0 +1,35 @@
+Kelompok : 1
+- Ferdie
+- Daffa
+- Syaifun
+- Tantri
+
+
+Kelompok : 2
+- Aufa
+- Fitri
+- Ijal
+- Hafizh
+- Rico
+
+
+Kelompok : 3
+- Yoga
+- Piter
+- Yasir
+- Aher
+
+
+Kelompok : 4
+- Rivan
+- Rafli
+- Ari
+- Aldy
+- Ukasah
+
+
+Kelompok : 5
+- Dias
+- Fitrah
+- Rizky
+- Nugraha
