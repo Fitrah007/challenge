@@ -21,20 +21,20 @@ router.get('/', (req, res) => {
 
 router.post('/produk',middlewares.auth,middlewares.role('admin'), produk.store);
 router.get('/produk',middlewares.auth,middlewares.role(['basic','admin']), produk.index);
-router.get('/produk/:id_produk',middlewares.auth,middlewares.role('admin'), produk.show);
+router.get('/produk/:id_produk',middlewares.auth,middlewares.role(['basic','admin']), produk.show);
 router.put('/produk/:id_produk',middlewares.auth,middlewares.role('admin'), produk.update);
 router.delete('/produk/:id_produk',middlewares.auth,middlewares.role('admin'), produk.destroy);
 router.post('/produk/connect',middlewares.auth,middlewares.role('admin'), produk.connect);
 
 router.post('/komponen',middlewares.auth,middlewares.role('admin'), komponen.store);
-router.get('/komponen',middlewares.auth,middlewares.role('admin'), komponen.index);
-router.get('/komponen/:id_komponen',middlewares.auth,middlewares.role('admin'), komponen.show);
+router.get('/komponen',middlewares.auth,middlewares.role(['basic','admin']), komponen.index);
+router.get('/komponen/:id_komponen',middlewares.auth,middlewares.role(['basic','admin']), komponen.show);
 router.put('/komponen/:id_komponen',middlewares.auth,middlewares.role('admin'), komponen.update);
 router.delete('/komponen/:id_komponen',middlewares.auth,middlewares.role('admin'), komponen.destroy);
 
 router.post('/pemasok',middlewares.auth,middlewares.role('admin'), pemasok.store);
-router.get('/pemasok',middlewares.auth,middlewares.role('admin'), pemasok.index);
-router.get('/pemasok/:id_pemasok',middlewares.auth,middlewares.role('admin'), pemasok.show);
+router.get('/pemasok',middlewares.auth,middlewares.role(['basic','admin']), pemasok.index);
+router.get('/pemasok/:id_pemasok',middlewares.auth,middlewares.role(['basic','admin']), pemasok.show);
 router.put('/pemasok/:id_pemasok',middlewares.auth,middlewares.role('admin'), pemasok.update);
 router.delete('/pemasok/:id_pemasok',middlewares.auth,middlewares.role('admin'), pemasok.destroy);
 router.post('/pemasok/connect',middlewares.auth,middlewares.role('admin'), pemasok.connect);
